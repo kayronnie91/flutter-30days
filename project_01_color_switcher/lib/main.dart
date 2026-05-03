@@ -51,9 +51,10 @@ class _ColorPaletteState extends State<ColorPalette> {
 
   @override
   Widget build(BuildContext context) {
+    var bgColor = palette[colorIndex].color;
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: palette[(colorIndex)].color,
+        backgroundColor: bgColor,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
