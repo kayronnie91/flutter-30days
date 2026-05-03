@@ -52,6 +52,7 @@ class _ColorPaletteState extends State<ColorPalette> {
   @override
   Widget build(BuildContext context) {
     var bgColor = palette[colorIndex].color;
+    var brightness = ThemeData.estimateBrightnessForColor(bgColor);
     return MaterialApp(
       home: Scaffold(
         backgroundColor: bgColor,
@@ -59,8 +60,8 @@ class _ColorPaletteState extends State<ColorPalette> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  [
-              Text(palette[colorIndex].name),
-              Text(palette[colorIndex].hex),
+              Text(palette[colorIndex].name, style: TextStyle(color: (brightness == Brightness.dark) ? Colors.white : Colors.black),),
+              Text(palette[colorIndex].hex, style: TextStyle(color:(brightness == Brightness.dark) ? Colors.white : Colors.black),),
               ElevatedButton(
                   onPressed: (){
                     setState(() {
