@@ -60,8 +60,10 @@ class _ColorPaletteState extends State<ColorPalette> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  [
-              Text(palette[colorIndex].name, style: TextStyle(color: (brightness == Brightness.dark) ? Colors.white : Colors.black),),
-              Text(palette[colorIndex].hex, style: TextStyle(color:(brightness == Brightness.dark) ? Colors.white : Colors.black),),
+              Text(palette[colorIndex].name, style: TextStyle(color: (brightness == Brightness.dark) ? Colors.white : Colors.black, fontSize: 28, fontWeight: FontWeight(700)),),
+              SizedBox(height:8),
+              Text(palette[colorIndex].hex, style: TextStyle(color:(brightness == Brightness.dark) ? Colors.white : Colors.black, fontSize: 22, fontWeight: FontWeight(500)),),
+              SizedBox(height:8),
               ElevatedButton(
                   onPressed: (){
                     setState(() {
