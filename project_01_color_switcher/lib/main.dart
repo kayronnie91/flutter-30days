@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+class PaletteItem {
+  final Color color;
+  final String name;
+  final String hex;
+
+  PaletteItem({
+    required this.color,
+    required this.hex,
+    required this.name,
+});
+}
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,24 +34,41 @@ class ColorPalette extends StatefulWidget {
 
 class _ColorPaletteState extends State<ColorPalette> {
 
-  Color currentColor = Colors.teal;
-  List <Color> palette = [Colors.black, Colors.white10, Colors.green, Colors.lightBlueAccent, Colors.red];
+  int colorIndex = 0;
+
+  List<PaletteItem> palette = [
+    PaletteItem(
+      color: Colors.red,
+      name: "Crimson Red",
+      hex: "#FF0000",
+    ),
+    PaletteItem(
+      color: Colors.blue,
+      name: "Ocean Blue",
+      hex: "#2196F3",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: currentColor,
+        backgroundColor: palette[(colorIndex)].color,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  [
-              Text('Color Name'),
-              Text('Hex Code'),
+              Text(palette[colorIndex].name),
+              Text(palette[colorIndex].hex),
               ElevatedButton(
                   onPressed: (){
                     setState(() {
-                      currentColor = palette[(1)];
+                      if(colorIndex < palette.length -1 ){
+                        colorIndex++;
+                      }
+                      else{
+                        colorIndex = 0;
+                      }
                     });
                   },
                   child: Text('Change Color'),
