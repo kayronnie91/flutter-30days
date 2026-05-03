@@ -23,6 +23,7 @@ class ColorPalette extends StatefulWidget {
 class _ColorPaletteState extends State<ColorPalette> {
 
   Color currentColor = Colors.teal;
+  List <Color> palette = [Colors.black, Colors.white10, Colors.green, Colors.lightBlueAccent, Colors.red];
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,17 @@ class _ColorPaletteState extends State<ColorPalette> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children:  [
               Text('Color Name'),
               Text('Hex Code'),
+              ElevatedButton(
+                  onPressed: (){
+                    setState(() {
+                      currentColor = palette[(1)];
+                    });
+                  },
+                  child: Text('Change Color'),
+              )
             ],
           ),
         ),
