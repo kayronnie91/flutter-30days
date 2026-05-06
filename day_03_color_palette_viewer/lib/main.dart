@@ -44,6 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: currentColor.color, // UI uses STATE
+
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              currentColor = colors[1]; // switch to another color
+            });
+          },
+          child: Container(
+            width: 120,
+            height: 120,
+            color: Colors.black,
+            alignment: Alignment.center,
+            child: const Text('Tap me', style: TextStyle(color: Colors.white)),
+          ),
+        ),
+      ),
+    );
   }
 }
