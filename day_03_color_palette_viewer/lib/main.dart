@@ -175,6 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onChanged: (value) {
                       setState(() {
                         checkBox = value!;
+                        currentColor = colors[0];
                       });
                     },
                   ),
@@ -185,6 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onChanged: (value) {
                       setState(() {
                         checkBox2 = value!;
+                        currentColor = colors[1];
                       });
                     },
                   ),
@@ -195,6 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onChanged: (value) {
                       setState(() {
                         checkBox3 = value!;
+                        currentColor = colors[2];
                       });
                     },
                   ),
