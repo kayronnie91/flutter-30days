@@ -31,6 +31,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late PaletteColor currentColor;
   bool checkBox = false;
+  bool checkBox2 = false;
+  bool checkBox3 = false;
   final List<PaletteColor> colors = [
     PaletteColor(color: Colors.blue, name: 'Ocean Blue', hex: '#BAS44S3'),
     PaletteColor(color: Colors.red, name: 'Red', hex: '#4464BAG'),
@@ -167,11 +169,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   SizedBox(height: 22),
-                  GalleryCard(currentColor: colors[0], checkBox: true),
+                  GalleryCard(
+                    currentColor: colors[0],
+                    checkBox: checkBox,
+                    onChanged: (value) {
+                      setState(() {
+                        checkBox = value!;
+                      });
+                    },
+                  ),
                   SizedBox(height: 10),
-                  GalleryCard(currentColor: colors[1], checkBox: true),
+                  GalleryCard(
+                    currentColor: colors[1],
+                    checkBox: checkBox2,
+                    onChanged: (value) {
+                      setState(() {
+                        checkBox2 = value!;
+                      });
+                    },
+                  ),
                   SizedBox(height: 10),
-                  GalleryCard(currentColor: colors[2], checkBox: true),
+                  GalleryCard(
+                    currentColor: colors[2],
+                    checkBox: checkBox3,
+                    onChanged: (value) {
+                      setState(() {
+                        checkBox3 = value!;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
@@ -187,9 +213,11 @@ class GalleryCard extends StatelessWidget {
     super.key,
     required this.currentColor,
     required this.checkBox,
+    required this.onChanged,
   });
   final PaletteColor currentColor;
   final bool checkBox;
+  final Function(bool?) onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -236,7 +264,7 @@ class GalleryCard extends StatelessWidget {
             ),
             SizedBox(width: 16),
             Spacer(),
-            Checkbox(value: checkBox, onChanged: (value) {}),
+            Checkbox(value: checkBox, onChanged: onChanged),
           ],
         ),
       ),
